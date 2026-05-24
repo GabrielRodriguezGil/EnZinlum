@@ -44,4 +44,11 @@ public class Address {
     public PublicKey getPK() {
         return PK;
     }
+
+    public void send(TokenContract contract, Double enziniums){
+        if (enziniums <= this.balance) {
+            contract.payable(getPK(), enziniums);
+            this.balance -= enziniums;
+        }
+    }
 }
